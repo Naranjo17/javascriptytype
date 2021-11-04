@@ -1,0 +1,88 @@
+<div style="text-align:center">
+<h2>{{nombre_componentes}}</h2>
+
+<h3>Selector de colores</h3>
+<input type="text" [(ngModel)]="color_seleccionado">
+<pre>
+    <strong>color elegido: </strong>
+    {{color_seleccionado}}
+</pre>
+<div [ngStyle]="{
+    'background': color_seleccionado,
+    'width': '200px',
+    'heigth': '200px',
+    'float': 'rigth',
+    'margin-rigth': '45%'
+
+    }"
+></div>
+<div style= "clear: both;"></div>
+
+<!-- <ul [ngSwitch]= "color">
+<li *ngSwitchCase="'green'" [ngStyle]="{
+    'background':'color',
+    'color': 'white',
+    'padding': '20px'
+}">
+Este es color rojo</li>
+</ul>
+<ul [ngSwitch]= "color">
+<li *ngSwitchCase="'pink'" [ngStyle]="{
+    'background':'color',
+    'color': 'white',
+    'padding': '20px'
+}">
+Este es color rojo</li>
+</ul>
+<hr>
+<p><strong>Producto en descuento</strong></p>
+</div>
+<button (click)="cambiarvalor1(true)"> Mostrar</button>
+<hr /> 
+<ul *ngIf="inventario[2].estado == true  ">
+        <li>{{inventario[2].nombrepro}}</li>
+        <li>{{inventario[2].cantidadexi}}</li>
+        <li>{{inventario[2].embalaje}}</li>
+    
+</ul>
+<ul *ngIf="inventario[3].estado !== false  ">
+        <li>{{inventario[3].nombrepro}}</li>
+        <li>{{inventario[3].cantidadexi}}</li>
+        <li>{{inventario[3].embalaje}}</li>
+    
+</ul> -->
+<button (click)="cambiarvalor2(false)"> ocultar</button>
+
+<h3>Listado de productos</h3>
+<ul>
+    <li *ngFor="let pro of inventario">
+        <ul>
+            <li>{{pro.nombrepro}}</li>
+            <li>{{pro.cantidadexi}}</li>
+            <li>{{pro.embalaje}}</li>
+            <li *ngIf="pro.estado == true">Activo</li>
+        </ul>
+
+    </li>
+</ul>
+<table>
+    <thead>
+        <tr>
+        <th>Nombre del producto</th>
+        <th>Cantidad</th>
+        <th>Empaque</th>
+        <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of inventario; let i = index">
+            <td> {{ i+1}}</td>
+            <td>{{pro.nombrepro}}</td>
+            <td>{{pro.cantidadexi}}</td>
+            <td>{{pro.embalaje}}</td>
+            <td *ngIf="pro.estado == true">Activo</td>
+        </tr>
+        </tbody>
+
+
+
